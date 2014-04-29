@@ -356,12 +356,12 @@ protected:	// ScintillaBase subclass needs access to much of Editor
 	int LineFromLocation(Point pt) const;
 	void SetTopLine(int topLineNew);
 
-	bool AbandonPaint();
+	virtual bool AbandonPaint();
 	virtual void RedrawRect(PRectangle rc);
 	virtual void DiscardOverdraw();
 	virtual void Redraw();
 	void RedrawSelMargin(int line=-1, bool allAfter=false);
-	PRectangle RectangleFromRange(int start, int end);
+	PRectangle RectangleFromRange(Range r);
 	void InvalidateRange(int start, int end);
 
 	bool UserVirtualSpace() const {
@@ -420,6 +420,7 @@ protected:	// ScintillaBase subclass needs access to much of Editor
 	void ScrollRange(SelectionRange range);
 	void ShowCaretAtCurrentPosition();
 	void DropCaret();
+	void CaretSetPeriod(int period);
 	void InvalidateCaret();
 	virtual void UpdateSystemCaret();
 
